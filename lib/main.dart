@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ml_text_recognition/home_screen.dart';
+import 'home_page.dart';
+import 'text_recognition_page.dart';
+import 'settings_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +13,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ML Text Recognition',
       debugShowCheckedModeBanner: false,
+      title: 'Textify',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/recognition': (context) => const HomeScreen(),
+        '/settings': (context) => const SettingsPage(),
+      },
     );
   }
 }
